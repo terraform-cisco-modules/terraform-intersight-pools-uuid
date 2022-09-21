@@ -10,8 +10,8 @@ Location in GUI:
 ### main.tf
 ```hcl
 module "uuid_pool" {
-  source  = "scotttyso/pools-uuid/intersight"
-  version = ">= 1.0.2"
+  source  = "terraform-cisco-modules/pools-uuid/intersight"
+  version = ">= 1.0.1"
 
   assignment_order = "sequential"
   description      = "defualt UUID Pool"
