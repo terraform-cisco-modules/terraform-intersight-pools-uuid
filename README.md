@@ -11,7 +11,7 @@ Location in GUI:
 ```hcl
 module "uuid_pool" {
   source  = "terraform-cisco-modules/pools-uuid/intersight"
-  version = ">= 1.0.1"
+  version = ">= 1.0.2"
 
   assignment_order = "sequential"
   description      = "defualt UUID Pool"
