@@ -1,7 +1,3 @@
-terraform {
-  experiments = [module_variable_optional_attrs]
-}
-
 #____________________________________________________________
 #
 # UUID Pool Variables Section.
@@ -35,8 +31,8 @@ variable "uuid_blocks" {
   type = list(object(
     {
       from = string
-      size = optional(number)
-      to   = optional(string)
+      size = optional(number, null)
+      to   = optional(string, null)
     }
   ))
 }

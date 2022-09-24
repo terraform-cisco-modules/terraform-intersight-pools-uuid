@@ -14,7 +14,7 @@ data "intersight_organization_organization" "org_moid" {
 # GUI Location: Pools > Create Pool
 #____________________________________________________________
 
-resource "intersight_uuidpool_pool" "uuid_pool" {
+resource "intersight_uuidpool_pool" "uuid" {
   assignment_order = var.assignment_order
   description      = var.description != "" ? var.description : "${var.name} UUID Pool."
   name             = var.name
@@ -24,8 +24,8 @@ resource "intersight_uuidpool_pool" "uuid_pool" {
     content {
       object_type = "uuidpool.UuidBlock"
       from        = uuid_suffix_blocks.value.from
-      size        = uuid_suffix_blocks.value.size != null ? uuid_suffix_blocks.value.size : null
-      to          = uuid_suffix_blocks.value.to != null ? uuid_suffix_blocks.value.to : null
+      size        = uuid_suffix_blocks.value.size
+      to          = uuid_suffix_blocks.value.to
     }
   }
   organization {

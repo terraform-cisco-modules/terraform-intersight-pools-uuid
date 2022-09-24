@@ -5,5 +5,5 @@
 
 output "moid" {
   description = "UUID Pool Managed Object ID (moid)."
-  value       = intersight_uuidpool_pool.uuid_pool.moid
+  value       = intersight_uuidpool_pool.uuid.moid
 }
