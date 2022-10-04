@@ -3,7 +3,7 @@ module "uuid_pool" {
   version = ">= 1.0.2"
 
   assignment_order = "sequential"
-  description      = "defualt UUID Pool"
+  description      = "defualt UUID Pool."
   name             = "default"
   organization     = "default"
   prefix           = "000025B5-0000-0000"

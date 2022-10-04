@@ -1,9 +1,5 @@
 terraform {
   required_providers {
-    test = {
-      source = "terraform.io/builtin/test"
-    }
-
     intersight = {
       source  = "CiscoDevNet/intersight"
       version = ">=1.0.32"
@@ -11,41 +7,36 @@ terraform {
   }
 }
 
+# Setup provider, variables and outputs
+provider "intersight" {
+  apikey    = var.intersight_keyid
+  secretkey = file(var.intersight_secretkeyfile)
+  endpoint  = var.intersight_endpoint
+}
+
+variable "intersight_keyid" {}
+variable "intersight_secretkeyfile" {}
+variable "intersight_endpoint" {
+  default = "intersight.com"
+}
+variable "name" {}
+
+output "moid" {
+  value = module.main.moid
+}
+
+# This is the module under test
 module "main" {
   source           = "../.."
   assignment_order = "sequential"
-  description      = "Demo WWPN Pool"
-  id_blocks = [
+  description      = "${var.name} UUID Pool."
+  prefix           = "000025B5-0000-0000"
+  uuid_blocks = [
     {
-      from = "0:00:00:25:B5:00:00:00"
+      from = "0000-000000000000"
       size = 1000
     }
   ]
-  name         = "default"
+  name         = var.name
   organization = "default"
-  pool_purpose = "WWPN"
-}
-
-data "intersight_fcpool_pool" "wwpn_pool" {
-  depends_on = [
-    module.main
-  ]
-  name = "default"
-}
-
-resource "test_assertions" "wwpn_pool" {
-  component = "wwpn_pool"
-
-  # equal "description" {
-  #   description = "description"
-  #   got         = data.intersight_fcpool_pool.wwpn_pool.description
-  #   want        = "Demo WWPN Pool"
-  # }
-  # 
-  # equal "name" {
-  #   description = "name"
-  #   got         = data.intersight_fcpool_pool.wwpn_pool.name
-  #   want        = "default"
-  # }
-
 }

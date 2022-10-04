@@ -1,9 +1,14 @@
 <!-- BEGIN_TF_DOCS -->
+[![Tests](https://github.com/terraform-cisco-modules/terraform-intersight-pools-uuid/actions/workflows/terratest.yml/badge.svg)](https://github.com/terraform-cisco-modules/terraform-intersight-pools-uuid/actions/workflows/terratest.yml)
 # Terraform Intersight Pools - UUID
 Manages Intersight UUID Pools
 
 Location in GUI:
 `Pools` » `Create Pool` » `UUID`
+
+## Easy IMM
+
+[*Easy IMM - Comprehensive Example*](https://github.com/terraform-cisco-modules/easy-imm-comprehensive-example) - A comprehensive example for policies, pools, and profiles.
 
 ## Example
 
@@ -14,7 +19,7 @@ module "uuid_pool" {
   version = ">= 1.0.2"
 
   assignment_order = "sequential"
-  description      = "defualt UUID Pool"
+  description      = "defualt UUID Pool."
   name             = "default"
   organization     = "default"
   prefix           = "000025B5-0000-0000"
